@@ -1,0 +1,60 @@
+Chefe de Cozinha
+
+Você é um chefe de cozinha em um restaurante que abre às 18:00 e fecha às 23:00. Os clientes fazem pedidos de pratos que precisam ser preparados em ordem sequencial. Cada prato tem um tempo de preparo específico e é pedido em um instante (horário) específico. Seu objetivo é calcular quantos pedidos foram atendidos antes do fechamento do restaurante.
+
+Dado um conjunto de pedidos, onde cada pedido é representado pelo instante em que foi realizado e o tempo de preparo do prato (em minutos), você deve calcular quantos pedidos conseguiram ser atendidos antes das 23:00. Cada pedido leva um tempo fixo para ser preparado, e o próximo pedido só pode ser iniciado após o prato anterior estar pronto.
+
+Cada linha da entrada consiste nas informações de um pedido: o instante em que o pedido foi realizado (no formato <horas>:<minutos>) e o tempo necessário para preparar o pedido (em minutos). Você deve parar de ler a entrada em duas situações: quando não há mais tempo para fazer os pedidos ou quando a linha de entrada começar com 00:00. Para ler cada linha, você pode utilizar o código a seguir:
+
+horas, minutos, tempo_pedido = [int(x) for x in input().replace(":", " ").split()]
+
+Como saída, você deve informar o número total de pedidos feitos antes das 23:00.
+Teste 01
+
+Entrada
+
+18:27 60
+19:31 50
+20:33 60
+22:38 40
+22:59 30
+
+Saída
+
+3
+
+Teste 03
+
+Entrada
+
+18:39 60
+19:46 60
+20:21 20
+20:33 50
+21:14 30
+21:52 40
+22:36 60
+22:59 40
+
+Saída
+
+5
+
+Teste 05
+
+Entrada
+
+18:07 40
+18:41 20
+19:02 50
+20:01 60
+20:38 20
+21:04 40
+21:40 20
+22:07 60
+22:53 40
+22:59 50
+
+Saída
+
+7

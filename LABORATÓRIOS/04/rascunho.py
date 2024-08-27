@@ -1,18 +1,10 @@
-###################################################
-# MC102 - Algoritmos e Programação de Computadores
-# Laboratório 4 - Chefe de Cozinha
-# Nome:Gian Gabriel Silva Vianna
-# RA: 278439
-###################################################
-  
-# Leitura da entrada
-c=0
 
+c=0
+fim=0
 horas_acabei, minutos_acabei = 0, 0
 while True:
     horas, minutos, tempo_pedido = [int(x) for x in input().replace(":", " ").split()]
     
-# Processamento dos dados
     if horas_acabei < horas or (horas_acabei == horas and minutos_acabei <= minutos):
         
         horas += tempo_pedido // 60
@@ -34,7 +26,7 @@ while True:
     
 
     if horas >= 23:
-        break
+        fim = 1
 
     elif horas == minutos & horas == 00:
         break
@@ -42,9 +34,6 @@ while True:
     horas_acabei, minutos_acabei = horas, minutos
     c+=1
     
- 
-
-# Saída de dados
+    if fim == 1:
+        break
 print(c)
-
-
