@@ -1,0 +1,52 @@
+Geladeiras Subzero
+
+Você começou a trabalhar no seu novo emprego em uma grande loja online de eletrodomésticos. O time de programadores do qual você faz parte agora está trabalhando em um sistema de recomendação e a sua tarefa é fazer um programa que realize uma recomendação de modelo de geladeira para os clientes.
+
+Para a recomendação você terá acesso as seguintes informações: tipo de geladeira (simples ou duplex), número de pessoas na casa e potência do motor da geladeira.
+
+Para ajudar na criação do programa, você recebeu duas tabelas que indicam os modelos recomendados para cada caso, sendo uma tabela para clientes interessados em geladeiras simples e outra para clientes interessados em geladeiras duplex. Note que para alguns modelos a versão simples e a duplex tem o mesmo nome.
+
+Tabelas de Recomendações
+
+Por exemplo, para um cliente buscando uma geladeira simples para uma casa com 5 pessoas e potência do motor de 80 deve ser recomendado o modelo IceCold. Da mesma forma, para um cliente buscando uma geladeira duplex para uma pessoa e potência do motor de 100 deve ser recomendado o modelo Gel-D.
+
+A entrada do seu programa será composta por três linhas. O primeira linha conterá um caractere S, caso o cliente busque uma geladeira simples, ou D, caso o cliente busque uma geladeira duplex. As próximas duas linhas terão um número inteiro em cada, indicando o número de pessoas na casa e a potência do motor.
+
+A saída deverá imprimir uma única linha com o nome do modelo recomendado.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+Teste 01
+
+Entrada
+
+S
+5
+80
+
+Saída
+
+IceCold
+
+Teste 02
+
+Entrada
+
+D
+1
+100
+
+Saída
+
+Gel-D
+
+Teste 03
+
+Entrada
+
+S
+3
+140
+
+Saída
+
+Frost++

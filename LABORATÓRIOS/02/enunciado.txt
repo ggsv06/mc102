@@ -1,0 +1,49 @@
+Escolhendo seu Cartão de Crédito
+
+Você está avaliando se deve manter seu cartão de crédito atual, que não possui anuidade, ou fazer um upgrade para um novo cartão que oferece mais benefícios, porém cobra uma anuidade. Para tomar essa decisão, você pode usar seu conhecimento em programação para desenvolver um programa que ajude a calcular e comparar os gastos e benefícios dos dois cartões.
+
+Para o cartão atual, não há anuidade, mas para o novo cartão há uma anuidade fixa de R$ X, mas você teria acesso a benefícios adicionais mensais de R$ Y e um cashback de Z% em todas as compras (ou seja, Z% do valor de todas as compras será devolvido para você).
+
+Seu programa deve receber como entrada os valores de X, Y e Z, e o seu gasto mensal estimado K. Com esses dados, o programa calculará o custo total da nova opção de cartão para os próximos 12 meses, levando em conta a anuidade, benefícios mensais e cashback, e determinará qual opção é mais vantajosa (manter ou não o cartão atual).
+
+Como saída, seu programa deverá imprimir o valor booleano True se manter o cartão atual é mais econômico ou False se fazer o upgrade para o novo cartão é a melhor escolha, considerando o período considerado.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+Teste 01
+
+Entrada
+
+1500
+15
+2.5
+3000
+
+Saída
+
+True
+
+Teste 02
+
+Entrada
+
+1000
+20
+3.0
+5000
+
+Saída
+
+False
+
+Teste 03
+
+Entrada
+
+1400
+18
+2.2
+4000
+
+Saída
+
+True
