@@ -6,45 +6,31 @@
 ###################################################
   
 # Leitura da entrada
+acabou = 0
 c=0
-
-horas_acabei, minutos_acabei = 0, 0
 while True:
     horas, minutos, tempo_pedido = [int(x) for x in input().replace(":", " ").split()]
-    
+
 # Processamento dos dados
-    if horas_acabei < horas or (horas_acabei == horas and minutos_acabei <= minutos):
-        
-        horas += tempo_pedido // 60
-        minutos += tempo_pedido % 60
+    mins = horas*60 +minutos
 
-        if minutos >= 60:
-            horas += minutos // 60
-            minutos = minutos % 60
-    else:
-
-        horas_acabei += tempo_pedido // 60
-        minutos_acabei += tempo_pedido % 60
-
-        if minutos >= 60:
-            horas_acabei += minutos // 60
-            minutos_acabei = minutos % 60
-        
-        horas, minutos = horas_acabei, minutos_acabei
+    if acabou <= mins:
+        acabou = mins + tempo_pedido
     
+    elif acabou > mins:
+        acabou += tempo_pedido
 
-    if horas >= 23:
-        break
 
-    elif horas == minutos & horas == 00:
+    if acabou >= 1380:
         break
-    
-    horas_acabei, minutos_acabei = horas, minutos
+    if horas == 00 and minutos == 00:
+        break
     c+=1
     
- 
-
 # Saída de dados
 print(c)
+    
+   
+
 
 
