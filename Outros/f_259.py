@@ -1,24 +1,23 @@
-import math
+import math as m
 import latexify
 import sympy as sp
 
 
-
 @latexify.function
-def Ua():
-    t = sp.symbols('t')
-    ut = sp.symbols('ut')
-    h = sp.symbols('h')
-    uh = sp.symbols('uh')
-    f = ( 2/(t**2) )*(( (uh**2) + 4*(((h*uh)/t)**2) )**(1/2))
-    return f
-
+def Ua(t, ut, h, uh):
+    return ( 2/(t**2) )*(m.sqrt( (uh**2) + 4*(((h*ut)/t)**2) ))
+    
+@latexify.function
 def Ut(g, r, ur, a, ua, b, ub):
-    f = (g/(a))*(( ((r*ub)**2) + (((b*r*ua)/a)**2) + ((b*ur)**2) )**(1/2))
-    return f
-
+    return ( (g)/(a) )*m.sqrt(((r*ub)**2) + ((b*r*ua/a)**2) + ((b*ur)**2))
+   
+@latexify.function
 def Ui(g, m, um, r, ur, a, ua):
-    f = (g*r)*(( ((2*ur*((1/a) - m))**2) + (( (r*ua)/(a**2) )**2) + ((r*um)**2) )**(1/2))
-    return f
+    return (g*r)*m.sqrt( ((2*ur*((1/a) - m))**2) + (( (r*ua)/(a**2) )**2) + ((r*um)**2) )
 
-print(Ua)
+# @latexify.function
+#     def Uiesp
+
+print(f'{Ua}\n') 
+print(f'{Ut}\n')
+print(f'{Ui}\n')
