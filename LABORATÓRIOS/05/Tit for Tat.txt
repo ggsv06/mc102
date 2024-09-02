@@ -1,0 +1,76 @@
+Você faz parte da equipe de campanha de um candidato à prefeitura de uma importante cidade do Brasil. A última pesquisa de intenção de votos acabou de chegar, mostrando um resultado preocupante: o nosso candidato está em terceiro lugar, com uma diferença significativa para os dois primeiros colocados.
+
+"Não é o melhor cenário possível, mas OK. Vamos correr atrás. Ainda há muito tempo até as eleições e diversos comícios a serem realizados."
+
+O seu gerente de campanha, Steve, informa que ainda faltam K comícios até o fim do período eleitoral. Steve comenta também que há outros candidatos na disputa, com menor intenção de voto, cujas influências e militâncias podem ser úteis na promoção ou difamação do nosso candidato. Fazer uma "aliança" informal com esses candidatos pode ser o que falta para vencermos!
+
+Porém, há o risco que eles se aliem com os candidatos na liderança e se manifestem negativamente a nosso respeito ou organizem suas bases de militantes a fim de nos tirar votos. Caso necessário, devemos estar preparados para atacá-los. Steve diz que irá levantar os podres de nossos adversários.
+
+Enquanto isso, o time de marketing irá registrar todas essas ocorrências e contar "pontos" nessas interações, a fim de fazer uma estimativa do potencial de percepção da nossa imagem de campanha e dos adversários. Baseado em estudos político-eleitorais anteriores, a cada interação, foi definido que cada campanha receberá:
+
+Se uma campanha fizer um pronunciamento negativo em relação a outra e sua adversária se mantiver neutra: 5 pontos para a primeira e 0 pontos para a segunda
+Se ambas fizeram pronunciamentos negativos em relação a outra: 1 ponto para cada
+Se ambas se mantiverem neutras: 3 pontos para cada
+Como um ávido estudante da teoria dos jogos, seu candidato decide jogar esse jogo com a estratégia Tit for Tat, ou "retaliação equivalente". Você não conhece essa estratégia, mas ela se torna clara após uma busca que retorna esse ótimo vídeo:
+
+
+Portanto, nosso primeiro pronunciamento deve ser neutro e, a partir daí, iremos sempre repetir o posicionamento de nosso adversário. Se ele se posicionou de forma neutra durante o período, devemos retribuir, mantendo uma postura neutra em relação ao nosso adversário e focando o discurso em nossas propostas. Agora, caso ele tenha se manifestado negativamente a nosso respeito, devemos retaliar imediatamente.
+
+Como entrada, seu programa deve ler o valor K, seguido de K linhas indicando o posicionamento político de um adversário a nosso respeito (0 = neutro e 1 = negativo), que é sempre feito imediatamente após o nosso comício.
+
+Como saída, você deve indicar o nosso posicionamento (0 = neutro e 1 = negativo) em cada comício, cada qual em uma linha diferente, seguido de uma linha contendo o número total de pontos obtidos por nossa campanha e uma linha contendo o número total de pontos obtidos pela campanha adversária.
+
+Teste 01
+Entrada
+
+5
+0
+0
+0
+0
+0
+Saída
+
+0
+0
+0
+0
+0
+15
+15
+Teste 02
+Entrada
+
+5
+1
+1
+1
+1
+1
+Saída
+
+0
+1
+1
+1
+1
+4
+9
+Teste 03
+Entrada
+
+5
+0
+1
+0
+1
+0
+Saída
+
+0
+0
+1
+0
+1
+13
+13
