@@ -1,0 +1,64 @@
+Lista de Compras
+Você vai receber alguns amigos em casa para um jantar especial, onde vai preparar a sua famosa receita de macarrão com queijo. Durante os preparativos, percebeu que não tem alguns ingredientes necessários no armário da cozinha, então precisará ir às compras para completar a receita.
+
+Antes de ir às compras, você pesquisou o preço de N itens necessários em três mercados próximos à sua casa: PyMarket, ByteBazar e DevShop. No entanto, como você está com o orçamento apertado, você tem apenas D reais para gastar.
+
+No momento da compra, você sempre vai priorizar os itens na ordem em que aparecem na lista de compras, ou seja, usará seu dinheiro para comprar o item pelo menor preço entre os três mercados caso seja possível comprá-lo. Caso contrário, seu dinheiro será guardado para verificar se é possível comprar os próximos itens da lista. Além disso, você sempre dará prioridade ao PyMarket, seguido do ByteBazar e, por último, o DevShop.
+
+Como você sabe programar, você decidiu criar um programa que vai dizer quais ingredientes comprar em cada mercado e se foi possível completar a receita de macarrão com queijo.
+
+Na entrada de dados, seu código deve ler cinco linhas. A primeira linha contém o valor D em reais. A segunda linha apresenta o valor inteiro N. As três últimas linhas indicam os valores dos N itens nos mercados PyMarket, ByteBazar e DevShop, respectivamente. Como saída, você deve imprimir os itens comprados em cada mercado e se foi possível completar a receita.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+50.00
+5
+10.00 20.00 15.00 5.00 10.00
+5.00 20.00 10.00 10.00 10.00
+15.00 30.00 10.00 5.00 10.00
+Saída
+
+Itens comprados no PyMarket:
+2 4 5
+Itens comprados no ByteBazar:
+1 3
+Nenhum item foi comprado no DevShop
+Foi possível terminar a receita
+Teste 02
+Entrada
+
+50.00
+5
+10.00 25.00 25.00 5.00 10.00
+5.00 25.00 35.00 10.00 10.00
+15.00 30.00 25.00 5.00 10.00
+Saída
+
+Itens comprados no PyMarket:
+2 4 5
+Itens comprados no ByteBazar:
+1
+Nenhum item foi comprado no DevShop
+Não foi possível terminar a receita
+Neste caso, o primeiro item foi comprado no ByteBazar por ter o menor preço, restando R$ 45,00. Para o segundo item, tanto PyMarket quanto ByteBazar tem o mesmo preço, então a compra foi realizada no PyMarket, resultando em um saldo de R$ 20,00. O terceiro item não pôde ser comprado em nenhum dos mercados. Para o quarto item, tanto o PyMarket quanto o ByteBazar tem o mesmo preço, então a compra foi realizada no PyMarket, restando R$ 15,00. Por fim, o quinto item tem o mesmo preço nos três mercados, então a compra foi realizada no PyMarket, restando R$ 5,00. Como o terceiro item não foi comprado, não foi possível completar a receita.
+
+Teste 03
+Entrada
+
+45.03
+6
+8.63 7.01 8.03 19.36 5.76 6.49
+8.53 5.87 8.49 21.38 5.91 6.55
+7.57 5.93 8.07 20.12 4.92 5.05
+Saída
+
+Itens comprados no PyMarket:
+3 4
+Itens comprados no ByteBazar:
+2
+Itens comprados no DevShop:
+1
+Não foi possível terminar a receita
