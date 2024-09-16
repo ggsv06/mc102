@@ -1,0 +1,32 @@
+Dependências de Tarefas I
+As atividades que você deve realizar para a seu curso de graduação estão consideravelmente acumuladas e você está tendo dificuldades para organizá-las. Felizmente, você pode usar suas habilidades de programação para te ajudar com esse problema.
+
+O maior desafio que você encontrou para organizar as suas tarefas é que cada tarefa pode depender de outra tarefa. Consequentemente, pode ser impossível encontrar uma ordem em que as tarefas possam ser realizadas. No seguinte exemplo, como a tarefa 1 depende da tarefa 2, a tarefa 2 depende da tarefa 3 e a tarefa 3 depende da tarefa 1, não é possível realizar todas as tarefas, já que há um ciclo de dependências entre as 3 primeiras tarefas.
+
+Representação gráfica do exemplo de dependências de tarefas
+
+O seu programa receberá a lista das N tarefas representadas por uma lista com N números entre 1 e N. Se a i-ésima posição da lista for j, isso significa que a tarefa i depende da tarefa j. Se uma tarefa i não depender de nenhuma outra tarefa, a posição i terá o valor i. Com essa representação, o exemplo apresentado anteriormente é representado pela lista 2 3 1 6 6 6. Como saída seu programa deve imprimir Todas as tarefas podem ser realizadas, se for possível realizar todas as tarefas, ou Alguma das tarefas não pode ser realizada, caso contrário.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+2 3 1 6 6 6
+Saída
+
+Alguma das tarefas não pode ser realizada
+Teste 02
+Entrada
+
+1 5 2 1 4 6
+Saída
+
+Todas as tarefas podem ser realizadas
+Teste 03
+Entrada
+
+3 1 2 5 5 6
+Saída
+
+Alguma das tarefas não pode ser realizada
