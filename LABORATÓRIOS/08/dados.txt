@@ -1,0 +1,95 @@
+Processamento de Dados
+Você foi contratado por uma empresa para processar dados de clientes armazenados em um banco de dados. Os clientes enviam suas informações de maneira despadronizada, e sua tarefa é normalizar esses dados para que fiquem em um formato consistente e padronizado.
+
+Cada cliente enviou para a base as informações de nome, data de nascimento, endereço e telefone. Cada informação deve ser tratada da seguinte forma:
+
+Nome: Deixar somente a inicial do nome e dos sobrenomes em maiúsculo, exceto pelos termos de, da, das, do, dos e e (que devem ser escritos com todas as letras em minúsculas).
+
+Data de nascimento: Na base de dados existem três formatos diferentes: DD/MM/AAAA, DDMMAAAA e DD-MM-AAAA. O formato processado deve ser sempre na forma DD-MM-AAAA.
+
+Endereço: O endereço é dividido entre nome e número. Para o nome, as mesmas condições descritas para o campo Nome devem ser aplicadas. Na base de dados, a separação entre nome e número aparece em dois formatos diferentes: nome, número (com vírgula) e nome - número (com hífen). Os dados processados devem seguir o formato nome, número, sem espaço entre nome e , e com um espaço entre , e número.
+
+Telefone: Na base de dados existem quatro formatos diferentes: (XX)XXXXXXXXX, XXXXXXX-XXXX, XXXXXXXXXXX e (XX)XXXXX-XXXX. O formato processado deve ser sempre na forma (XX)XXXXX-XXXX.
+
+Como o banco de dados é muito grande, você resolveu tratar N conjuntos de dados por vez.
+
+A entrada do seu programa iniciará a leitura com o valor N na primeira linha. Na sequência, você deverá ler N dados de clientes, sendo que cada dado de cliente é composto por quatro linhas, com nome, data de nascimento, endereço e telefone, nesta sequência.
+
+A saída deverá imprimir quatro linhas por cliente, com o nome, data de nascimento, endereço e telefone processados. A saída deve ser na ordem em que os dados dos clientes foram lidos.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+2
+rogério da silva
+10031990
+avenida dos anjos, 100
+19999887766
+maria dos Santos
+25-04-1982
+Rua das flores - 83
+(19)99123-4567
+Saída
+
+Rogério da Silva
+10-03-1990
+Avenida dos Anjos, 100
+(19)99988-7766
+Maria dos Santos
+25-04-1982
+Rua das Flores, 83
+(19)99123-4567
+Teste 02
+Entrada
+
+3
+Maria Silva
+10-02-1995
+Rua das Flores, 123
+(11)987654321
+joão PEREIRA
+01121988
+Avenida paulista - 456
+11987654321
+Ana Carolina
+15/07/1990
+rua nova, 78
+(21)99999-1234
+Saída
+
+Maria Silva
+10-02-1995
+Rua das Flores, 123
+(11)98765-4321
+João Pereira
+01-12-1988
+Avenida Paulista, 456
+(11)98765-4321
+Ana Carolina
+15-07-1990
+Rua Nova, 78
+(21)99999-1234
+Teste 03
+Entrada
+
+2
+Carlos Eduardo
+23/05/1982
+Rua do Porto, 58
+(31)99999-8888
+Juliana costa
+07-12-1995
+Avenida Rio Branco - 234
+21987654321
+Saída
+
+Carlos Eduardo
+23-05-1982
+Rua do Porto, 58
+(31)99999-8888
+Juliana Costa
+07-12-1995
+Avenida Rio Branco, 234
+(21)98765-4321
