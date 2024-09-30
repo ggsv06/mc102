@@ -1,0 +1,57 @@
+Álbum de Fotos
+Foto das botas de um viajante, sentado com os pés estendidos enquanto aproveita a paisagem chilena
+Durante o recesso de aulas do final do ano, você viajou pela América do Sul, passou por dezenas de lugares e conheceu centenas de pessoas. Meses depois, você finalmente teve tempo para olhar novamente para as milhares de fotos que você tirou ao longo da viagem (e que havia compartilhado com todos que você encontrou ao longo da sua viagem).
+
+Sua viagem não foi planejada. Você ficou algumas semanas em alguns locais e poucos dias em outros. Você está procurando as fotos de uma amiga que você conheceu em Puerto Natales (Chile), o seu lugar favorito em toda a viagem, onde ficou hospedado por três semanas.
+
+"Nossa, não vai dar pra achar nada assim!" — você pensa, rolando a lista aparentemente inacabável de fotos.
+
+Ao inspecionar os detalhes das fotos, você percebe que as pessoas se marcaram nelas. Algumas pessoas aparecem em muitas fotos, enquanto outras aparecem pouco. Isto se correlaciona ao tempo de estadia em cada lugar.
+
+"Ótimo! Como estou fazendo MC102 neste semestre, posso construir um programa que dado um conjunto de fotos, encontre a pessoa mais importante do conjunto (ou seja, a pessoa que mais aparece nas fotos), assim como todas as fotos que ela aparece. Dessa forma, se eu fornecer todas as fotos que eu tirei em Puerto Natales, vou encontrar todas as fotos da minha amiga!"
+
+Seu objetivo é simples: dado um conjunto de fotos e uma lista de pessoas em cada foto, determinar o número total de pessoas que aparecem nas fotos, qual pessoa aparece em mais fotos e em quais fotos essa pessoa aparece. Em caso de empate, você deve mostrar aquela pessoa cujo nome aparece primeiro na ordem lexicográfica.
+
+Dica: é possível verificar se um nome está antes ou depois que outro, de acordo com a ordem lexicográfica, utilizando os operadores < e >:
+
+>>> "Adam Sandler" < "Jennifer Lopez"
+True
+Como entrada, seu programa deve ler o valor F, indicando o número de fotos totais no álbum, seguido de F linhas no formato foto {PHOTO_ID}: {NOME_1}, {NOME_2}, ..., {NOME_Q}.
+
+Como saída, você deve indicar o número total de pessoas que aparecem em todas as fotos, seguido do nome mais frequente nas fotos e, finalmente, em quais fotos esse nome ocorre.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+3
+foto 1: Ana Maria, Juliana Mendes
+foto 2: José Silva, João Carlos
+foto 3: João Carlos
+Saída
+
+No total, 4 pessoas apareceram nas fotos.
+João Carlos foi a pessoa mais frequente, aparecendo na(s) foto(s): 2 3
+Teste 02
+Entrada
+
+1
+foto 1: Ana Maria, Juliana Mendes, Carina Neves
+Saída
+
+No total, 3 pessoas apareceram nas fotos.
+Ana Maria foi a pessoa mais frequente, aparecendo na(s) foto(s): 1
+Teste 03
+Entrada
+
+5
+foto 1: João Paulo, Juliana Mendes, Carina Neves
+foto 2: Ana Maria, Juliana Mendes, Carina Neves
+foto 3: Ana Maria, Maria Pereira, Carina Neves
+foto 4: Ana Maria, Natalia Carvalho, Carina Neves
+foto 5: Ana Maria, Juliana Mendes
+Saída
+
+No total, 6 pessoas apareceram nas fotos.
+Ana Maria foi a pessoa mais frequente, aparecendo na(s) foto(s): 2 3 4 5
