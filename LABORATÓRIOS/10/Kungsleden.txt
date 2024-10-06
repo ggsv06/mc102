@@ -1,0 +1,110 @@
+Três amigos te convenceram a viajar para uma das regiões mais remotas da Suécia e fazer a trilha Kungsleden (ou "Trilha do Rei"). Após muitas horas de viagem, de avião e ônibus, vocês chegaram ao vilarejo de Abisko, fizeram o check-in no hostel e logo perguntaram se a dona do local tinha dicas sobre a trilha. Ela se limita a dizer — "contratem um guia" — sem nem levantar os olhos do livro de registros.
+
+Na manhã seguinte, vocês até procuram uma agência de trekking, mas devido ao aviso tardio, os preços estão muito altos para o orçamento do grupo. Vocês decidem ir por conta própria e se dirigem à saída do vilarejo. Os moradores veem que estão sozinhos e trocam olhares preocupados. Uma senhora se aproxima e diz "sigam a trilha e não entrem na floresta". Você e seus amigos estão confusos sobre a apreensão dos moradores.
+
+— "Eles não estão acostumados com turistas?"
+
+Após 4 horas caminhando, vocês estão exaustos. Você pergunta quanto tempo ainda falta até chegarem ao próximo checkpoint. O seu amigo pega o celular e abre o aplicativo de geolocalização.
+
+— "Está logo atrás daquela floresta" — ele diz apontando para uma grande área florestal densa, — "mas precisamos dar uma volta enorme para evitá-la. Aqui diz que precisamos caminhar por mais 3 horas."
+
+— "E quanto tempo vai levar, se cortarmos pela floresta?"
+
+— "Menos de uma hora, mas aquela senhora disse que não é uma boa ideia, lembra?"
+
+— "Andar por mais 3 horas não é uma boa ideia. Eles estavam provavelmente com medo de nos perdermos na floresta, mas não vai acontecer. Nós temos o geolocalizador e baterias de reserva."
+
+Você e seus amigos concordam e entram na floresta, confiantes que conseguirão transporte no checkpoint e estarão de volta ao hostel em 2 horas, no máximo...
+
+Já está de noite, vocês caminharam por duas horas e, até agora, não conseguiram ver o fim da floresta. Para piorar, vocês juram ter visto um vulto entre as árvores. Parece que um grande animal está perseguindo seu grupo.
+
+— "Alguma coisa está muito errada. Ainda sem sinal no GPS?" — você pergunta ao seu amigo.
+
+Ele pega o equipamento mais uma vez — "Sem sinal." — A situação é preocupante. Vocês começam a escutar o barulho do animal, um rugido como de um grande urso. Todos estão praticamente correndo quando encontram uma cabana.
+
+— "Ótimo! Vamos nos abrigar ali." — você pensa, se lembrando de ter escutado sobre estas construções na noite anterior, quando visitaram a taverna: cabanas foram construídas há tempos para ajudar trilheiros ao longo de suas caminhadas. Todos do grupo devem ter pensado o mesmo e correm até a porta sem hesitar.
+
+A cabana está abandonada, mas há um mapa sobre a mesa no centro da sala. Na parte de cima do mapa, a frase "FUJA! ESTA FLORESTA É A CASA DO JÖTUNN! SIGA O CAMINHO ATÉ O FIM DA FLORESTA!" está escrita em letras garrafais. Parece ser um mapa de parte da floresta, onde está localizada a cabana. Ele é dividido em regiões quadradas contendo setas (←, ↑, →, ↓) desenhadas sobre as regiões. Cada região possui uma seta, apontando a direção que os viajantes devem caminhar. O mapa também contém duas anotações únicas: "C", indicando a cabana onde você e seus amigos estão, e "F", indicando o fim da floresta.
+
+Mapa encontrado na cabana. O mapa está todo rabiscado com setas indicando os caminhos seguros.
+"Estamos salvos!" — grita um de seus amigos, mas você logo vê algo estranho: o mapa não possui nenhuma seta dentro da região da cabana. Além disso, alguns caminhos parecem te levar de volta a cabana. Qual caminho escolher? Você não está confiante, o mapa é enorme e difícil de ler.
+
+— "Nos metemos nessa enrascada porque não seguimos instrução. Dessa vez, vamos confiar no mapa. Porém, ainda precisamos escolher uma direção para começarmos a correr. A criatura continua à espreita, não há tempo a perder!"
+
+Enquanto seus amigos recuperam o folego, você pega seu notebook e começa a escrever um programa Python que vai descobrir qual é o caminho correto para o fim da floresta. Parece que seu conhecimento de algoritmos e programação (aprendido, em grande parte, na disciplina de MC102 da Unicamp) irá salvar a sua vida!
+
+Assim que o programa devolver o caminho seguro, você e seus amigos irão marcá-lo no mapa e correr o mais rápido possível, respeitando o caminho indicado no mapa.
+
+A entrada do seu programa deve consistir em dois números x e y, indicando a altura e largura do mapa, respectivamente, seguido de x linhas. Cada linha contém y letras, separadas por espaço e associada a cada um dos y setores horizontais do mapa:
+
+4 4
+S S O S
+O C L S
+S S N O
+O L L F
+Onde C representa a cabana; F o fim da floresta; e as setas ↑, ↓, →, ←, representadas pelas letras N (Norte), S (Sul), L (Leste) e O (Oeste), respectivamente, indicam as direções seguras para onde podemos correr, estando em uma certa região.
+
+A saída do programa deve conter quatro linhas, para cada direção (N, S, L, e O) possível a partir da cabana. Cada linha deve conter o resultado de se correr naquela direção (a partir da cabana), sendo um dos quatro possíveis resultados:
+
+de volta a cabana. Quando o caminho tomado forma um ciclo que retorna à cabana.
+andou em circulos. Quando o caminho tomado resulta em você e seus amigos andarem em circulos para sempre.
+caminho sem saida. Quando o caminho tomado leva à borda do mapa, mas não ao fim da floresta (F). Estes caminhos não podem ser confiados.
+encontrou o fim da floresta. Quando o caminho tomado leva ao fim da floresta (F) e a salvação.
+Por exemplo, para o mapa acima, o resultado esperado é:
+
+N: de volta a cabana.
+S: encontrou o fim da floresta.
+L: andou em circulos.
+O: caminho sem saida.
+Exemplos
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+4 4
+S S O S
+O C L S
+S S N O
+O L L F
+Saída
+
+N: de volta a cabana.
+S: encontrou o fim da floresta.
+L: andou em circulos.
+O: caminho sem saida.
+Teste 02
+Entrada
+
+8 7
+L L L L S L F
+O N L N L N N
+L N N N S S N
+L L C O O L N
+L L S N N S S
+L L S N N S S
+L N L S N N N
+O N O O O S S
+Saída
+
+N: encontrou o fim da floresta.
+S: andou em circulos.
+L: de volta a cabana.
+O: de volta a cabana.
+Teste 03
+Entrada
+
+7 6
+L L L F O O
+O N N O L N
+L N N N N O
+S L N O O N
+L N S N L N
+L N S C N S
+L N L N N O
+Saída
+
+N: encontrou o fim da floresta.
+S: de volta a cabana.
+L: encontrou o fim da floresta.
+O: de volta a cabana.
