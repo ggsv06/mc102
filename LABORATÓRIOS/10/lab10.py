@@ -17,13 +17,13 @@ for linha in range(0, y):
     mapa.append([x for x in input().split()])
 
 # Processamento de dados
-def avaliar(x,y):
-    tupla = ((x, y-1),(x+1, y),(x, y+1),(x-1, y))
+def avaliar(x,y,lmapa):
+    tupla = [(x, y-1),(x+1, y),(x, y+1),(x-1, y)]
     output = []
-    for direção, caso in enumerate(tupla):
+    for direção, caso in enumerate(tupla): 
         try:
-            i = mapa[caso[1]]
-            a = i[caso[0]]
+            i = lmapa[caso[1]]
+            a = i[caso[0]]           
             if a == 'C':
                 output.append('C')
                 break
@@ -39,11 +39,11 @@ def avaliar(x,y):
                 elif direção == 3 and a == 'L':
                     output.append((x-1,y))
         except:
-            continue
-        if 'C' in output:
-            return ['C']
-        else:
-            return output
+            pass
+    if 'C' in output:
+        return ['C']
+    else:
+        return output
 
 for i, linha in enumerate(mapa):
     for j, a in enumerate(linha):
@@ -53,6 +53,165 @@ for i, linha in enumerate(mapa):
         elif a == 'F':
             xf = j
             yf = i
+
+
+while True:
+    mapa_temp = mapa.copy()
+    lf = []
+    for j, linha in enumerate(mapa):
+        for i, a in enumerate(linha):
+            if a == 'F':
+                lf.append((i, j))     
+
+    for f in lf:
+        i = f[0]
+        j = f[1]
+
+        for p in avaliar(i, j, mapa_temp):
+            
+            if p == 'C':
+                saida = (i,j)
+                break
+            else:
+                linha = mapa_temp[p[1]]
+                linha.insert(p[0], 'F')
+                del linha[p[0]+1]
+                mapa_temp.insert(p[1], linha)
+                del mapa_temp[p[1]+1]
+        else:
+            continue
+        break
+    else:
+        continue
+    break
+sem_saida1 = '-'
+if 'N' in mapa[0]:
+    while True:
+        mapa_temp = mapa.copy()
+        ln = []
+        for j, a in enumerate(mapa[0]):
+            if a == 'N':
+                ln.append((i, j))     
+        for f in ln:
+            i = f[0]
+            j = f[1]
+
+            for p in avaliar(i, j, mapa_temp):
+                
+                if p == 'C':
+                    sem_saida1 = (i,j)
+                    break
+                else:
+                    linha = mapa_temp[p[1]]
+                    linha.insert(p[0], 'F')
+                    del linha[p[0]+1]
+                    mapa_temp.insert(p[1], linha)
+                    del mapa_temp[p[1]+1]
+            else:
+                continue
+            break
+        else:
+            continue
+        break
+sem_saida2 = '-'
+if 'S' in mapa[-1]:
+    while True:
+        mapa_temp = mapa.copy()
+        ln = []
+        for j, a in enumerate(mapa[-1]):
+            if a == 'S':
+                ln.append((i, j))     
+        for f in ln:
+            i = f[0]
+            j = f[1]
+
+            for p in avaliar(i, j, mapa_temp):
+                
+                if p == 'C':
+                    sem_saida2 = (i,j)
+                    break
+                else:
+                    linha = mapa_temp[p[1]]
+                    linha.insert(p[0], 'F')
+                    del linha[p[0]+1]
+                    mapa_temp.insert(p[1], linha)
+                    del mapa_temp[p[1]+1]
+            else:
+                continue
+            break
+        else:
+            continue
+        break
+sem_saida3 = '-'
+
+
+while True:
+    mapa_temp = mapa.copy()
+    lf = []
+    for j, linha in enumerate(mapa):
+        if linha[0] == 'O':
+            lf.append((0, j))
+            
+    if len(lf) == 0:
+        break
+    
+    for f in lf:
+        i = f[0]
+        j = f[1]
+        
+        for p in avaliar(i, j, mapa_temp):
+            
+            if p == 'C':
+                sem_saida3 = (i,j)
+                break
+            else:
+                linha = mapa_temp[p[1]]
+                linha.insert(p[0], 'F')
+                del linha[p[0]+1]
+                mapa_temp.insert(p[1], linha)
+                del mapa_temp[p[1]+1]
+        else:
+            continue
+        break
+    else:
+        continue
+    break
+sem_saida4 = '-'
+while True:
+    mapa_temp = mapa.copy()
+    lf = []
+    for j, linha in enumerate(mapa):
+        if linha[-1] == 'L':
+            lf.append((len(linha)-1,j))
+    if len(lf) == 0:
+        break
+
+    for f in lf:
+        i = f[0]
+        j = f[1]
+
+        for p in avaliar(i, j, mapa_temp):
+            
+            if p == 'C':
+                sem_saida4 = (i,j)
+                break
+            else:
+                linha = mapa_temp[p[1]]
+                linha.insert(p[0], 'F')
+                del linha[p[0]+1]
+                mapa_temp.insert(p[1], linha)
+                del mapa_temp[p[1]+1]
+        else:
+            continue
+        break
+    else:
+        continue
+    break
+print(saida)
+print(sem_saida1)
+print(sem_saida2)
+print(sem_saida3)
+print(sem_saida4)
 
 # Saída de dados
 
