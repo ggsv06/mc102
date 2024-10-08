@@ -5,46 +5,17 @@
 # RA: 23062009
 ###################################################
 
-
 # Leitura de dados
 l_input = [int(x) for x in input().split()]
 
-x = l_input[0]
-y = l_input[1]
+y = l_input[0]
+x = l_input[1]
 
 mapa = []
 for linha in range(0, y):
     mapa.append([x for x in input().split()])
 
 # Processamento de dados
-def avaliar(x,y,lmapa):
-    tupla = [(x, y-1),(x+1, y),(x, y+1),(x-1, y)]
-    output = []
-    for direção, caso in enumerate(tupla): 
-        try:
-            i = lmapa[caso[1]]
-            a = i[caso[0]]           
-            if a == 'C':
-                output.append('C')
-                break
-            elif a == 'F':
-                continue
-            else:
-                if direção == 0 and a == 'S':
-                    output.append((x, y-1))
-                elif direção == 1 and a == 'O':
-                    output.append((x+1, y))
-                elif direção == 2 and a == 'N':
-                    output.append((x,y+1)) 
-                elif direção == 3 and a == 'L':
-                    output.append((x-1,y))
-        except:
-            pass
-    if 'C' in output:
-        return ['C']
-    else:
-        return output
-
 for i, linha in enumerate(mapa):
     for j, a in enumerate(linha):
         if a == 'C':
@@ -54,164 +25,46 @@ for i, linha in enumerate(mapa):
             xf = j
             yf = i
 
-
-while True:
-    mapa_temp = mapa.copy()
-    lf = []
-    for j, linha in enumerate(mapa):
-        for i, a in enumerate(linha):
-            if a == 'F':
-                lf.append((i, j))     
-
-    for f in lf:
-        i = f[0]
-        j = f[1]
-
-        for p in avaliar(i, j, mapa_temp):
-            
-            if p == 'C':
-                saida = (i,j)
-                break
-            else:
-                linha = mapa_temp[p[1]]
-                linha.insert(p[0], 'F')
-                del linha[p[0]+1]
-                mapa_temp.insert(p[1], linha)
-                del mapa_temp[p[1]+1]
-        else:
-            continue
-        break
-    else:
-        continue
-    break
-sem_saida1 = '-'
-if 'N' in mapa[0]:
+def avaliar(x, y, xf, yf, mapa, dir):
+    caminho = []
+    borda_x = len(mapa[0]) - 1
+    borda_y = len(mapa) - 1
     while True:
-        mapa_temp = mapa.copy()
-        ln = []
-        for j, a in enumerate(mapa[0]):
-            if a == 'N':
-                ln.append((i, j))     
-        for f in ln:
-            i = f[0]
-            j = f[1]
 
-            for p in avaliar(i, j, mapa_temp):
-                
-                if p == 'C':
-                    sem_saida1 = (i,j)
-                    break
-                else:
-                    linha = mapa_temp[p[1]]
-                    linha.insert(p[0], 'F')
-                    del linha[p[0]+1]
-                    mapa_temp.insert(p[1], linha)
-                    del mapa_temp[p[1]+1]
-            else:
-                continue
-            break
+        if dir == 'N' and y > 0:
+            y = y-1
+        elif dir == 'L' and x < borda_x:
+            x = x+1
+        elif dir == 'S' and y < borda_y:
+            y = y+1
+        elif dir == 'O' and x > 0:
+            x = x - 1
         else:
-            continue
-        break
-sem_saida2 = '-'
-if 'S' in mapa[-1]:
-    while True:
-        mapa_temp = mapa.copy()
-        ln = []
-        for j, a in enumerate(mapa[-1]):
-            if a == 'S':
-                ln.append((i, j))     
-        for f in ln:
-            i = f[0]
-            j = f[1]
-
-            for p in avaliar(i, j, mapa_temp):
-                
-                if p == 'C':
-                    sem_saida2 = (i,j)
-                    break
-                else:
-                    linha = mapa_temp[p[1]]
-                    linha.insert(p[0], 'F')
-                    del linha[p[0]+1]
-                    mapa_temp.insert(p[1], linha)
-                    del mapa_temp[p[1]+1]
-            else:
-                continue
-            break
-        else:
-            continue
-        break
-sem_saida3 = '-'
-
-
-while True:
-    mapa_temp = mapa.copy()
-    lf = []
-    for j, linha in enumerate(mapa):
-        if linha[0] == 'O':
-            lf.append((0, j))
-            
-    if len(lf) == 0:
-        break
-    
-    for f in lf:
-        i = f[0]
-        j = f[1]
+            return 0
         
-        for p in avaliar(i, j, mapa_temp):
-            
-            if p == 'C':
-                sem_saida3 = (i,j)
-                break
-            else:
-                linha = mapa_temp[p[1]]
-                linha.insert(p[0], 'F')
-                del linha[p[0]+1]
-                mapa_temp.insert(p[1], linha)
-                del mapa_temp[p[1]+1]
+        if (x,y) in caminho:
+            return 1
         else:
-            continue
-        break
-    else:
-        continue
-    break
-sem_saida4 = '-'
-while True:
-    mapa_temp = mapa.copy()
-    lf = []
-    for j, linha in enumerate(mapa):
-        if linha[-1] == 'L':
-            lf.append((len(linha)-1,j))
-    if len(lf) == 0:
-        break
+            caminho.append((x,y))
 
-    for f in lf:
-        i = f[0]
-        j = f[1]
-
-        for p in avaliar(i, j, mapa_temp):
-            
-            if p == 'C':
-                sem_saida4 = (i,j)
-                break
-            else:
-                linha = mapa_temp[p[1]]
-                linha.insert(p[0], 'F')
-                del linha[p[0]+1]
-                mapa_temp.insert(p[1], linha)
-                del mapa_temp[p[1]+1]
-        else:
-            continue
-        break
-    else:
-        continue
-    break
-print(saida)
-print(sem_saida1)
-print(sem_saida2)
-print(sem_saida3)
-print(sem_saida4)
+        if x == xf and y == yf:
+            return 2
+        
+        linha = mapa[y]
+        a = linha[x]
+        if a == 'C':
+            return 3
+        dir = a
 
 # Saída de dados
-
+for dir in ['N', 'S', 'L', 'O']:
+    resposta = avaliar(xo, yo, xf, yf, mapa, dir)
+    if resposta == 0:
+        msg = 'caminho sem saida.'
+    elif resposta == 1:
+        msg = 'andou em circulos.'
+    elif resposta == 2:
+        msg = 'encontrou o fim da floresta.'
+    elif resposta == 3:
+        msg = 'de volta a cabana.'
+    print(f'{dir}: {msg}')
