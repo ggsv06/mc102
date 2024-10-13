@@ -1,0 +1,69 @@
+# Adicionar nome e email para saber quem fez o push
+git config --global user.name "Gian"
+git config --global user.email "g278439@dac.unicamp.br"
+
+# Clonar repositório do github
+git clone "https://github.com/ggsv06/repo"
+
+# Adicionar arquivos à lista para push
+git add "file_name.txt"
+# Adicionar todos os arquivos à lista para push
+git add .
+# Nota: caso nenhum arquivo tenha sido adicionado a esta lista temporária após editados, o commit não reconhecerá esses arquivos. É possível utilizar a flag '-a' antes da '-m' para adicionar todos os arquivos que, ao menos uma vez foram adicionados anteriormente. Ou seja, arquivos criados após o git add não serão rastreados
+
+# Status dos arquivos
+git status
+# Modo reduzido
+git status -s
+
+# Commit
+git commit -m "message"
+
+# Restaurar arquivos da lista de commit
+git restore "file_name.txt"
+
+# Avaliar as diferenças entre arquivos com commit e sem commit
+git diff
+
+# Ver todos os commits
+git log
+# forma resumida
+git log --oneline
+
+# Criar uma branch
+git branch "new_branch"
+
+# Ver branchs
+git branch
+
+# ativar branch
+git switch new_branch
+# criar e ativar uma nova branch
+git switch -c other_branch
+
+# após dar um commit nessa nova branch, é possível juntar com a main
+git merge -m "merge message" new_branch
+
+# Deletar uma branch
+git branch -d new_branch
+
+# Caso uma alteração seja feita na main e na branch, haverá conflito entre os arquivos após tentar dar um merge. O bash ativará uma branch temporária, os arquivos em conflito aparecerão com seu corpo identificados com as diferentes mudanças, apague o "head" e a versão que deseja descartar. Após isso, faça um commit, e o bash retornará à main branch
+
+# Remover arquivos
+rm "file.txt"
+
+# Dar push em um repositório no github vazio
+git remote add origin https://github.com/ggsv06/repositório
+git branch -M main
+git push -u origin main
+# Dar push em todas as branchs
+git push --all
+
+# atualizar todas as mudanças feitas no github para o local
+git fetch
+git merge
+# É possível utilizar um comando que faz ambos
+git pull
+
+# Vídeo útil
+https://www.youtube.com/watch?v=tRZGeaHPoaw&t=40s
