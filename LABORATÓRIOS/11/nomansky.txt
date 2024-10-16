@@ -1,0 +1,195 @@
+Dois anos após seu lançamento (e depois de diversas atualizações), o jogo No Man's Sky é um sucesso de vendas! A empresa está muito contente com o desempenho de vendas atual e decidiu continuar com a política de atualizações periódicas, a fim de torná-lo ainda melhor e atrair um público maior.
+
+Você trabalha como desenvolvedor no time de geração procedural da empresa, que introduziu, recentemente, um novo sistema de geração capaz de produzir 2^65536 mundos com ainda mais diversidade de flora e fauna, gerando características inusitadas e garantindo que jogadores tenham uma experiência ainda mais extraordinária.
+
+Após meses de desenvolvimento, o sistema de geração finalmente está em fase de testes. Embora todos estejam empolgados com os novos mundos, pessoas reportaram que alguns mundos fugiram do controle e produziram estados inválidos (fisicamente impossíveis) ou apresentaram combinações bizarras. Por exemplo, minhocas de areia (que habitam somente dunas) aparecendo em mundos oceânicos; animais com forma quadrúpede andando com as patas de trás; e até mesmo animais marinhos nadando no céu!
+
+Como o número de planetas afetados parece ser pequeno, o time decidiu, como solução paliativa, identificá-los e removê-los. Eles poderão ser re-inseridos em uma iteração futura de desenvolvimento.
+
+Você foi escalado para identificar os planetas anômalos. Como a quantidade de mundos é excepcionalmente alta, você decide criar um programa capaz de decidir se um mundo é ou não válido, dado sua configuração inicial e regras a serem seguidas.
+
+Você deve fazer um levantamento da documentação e regras do jogo, descritas abaixo.
+
+Documentação e regras do jogo
+Mundos são construídos a partir de protótipos, que descrevem os terrenos, climas, flora e fauna ali encontrados. Há oito protótipos de mundos diferentes, sendo eles:
+
+ID	Protótipo	Terrenos principais	Terrenos secundários
+PD	Desértico	TD	TA2
+PA	Árido e Semi-Árido	TA1 TA2	TD TP TM
+PTR	Tropical	TP TM	TAR TO1 TO2
+PTE	Temperado	TP TM	TAR TO1 TO2 TC
+PC	Congelado	TC TM	TO1 TO2 TP
+PR	Rochoso/Montanhoso	TC TM	TO1 TO2
+PO	Oceânico	TO1 TO2	TAR TM
+PV	Vulcânico	TM	TP TC
+Os mundos são constituídos de setores, cada qual associado a um tipo terreno. A tabela seguinte contém os descritores de terrenos, bem como suas respectivas vizinhanças possíveis:
+
+ID	Terreno	Terrenos vizinhos válidos
+TAR	Praia arenosa	TAR TO1 TP TC TM
+TO1	Oceano raso	TAR TO1 TO2 TM
+TO2	Oceano profundo	TO1 TO2
+TA1	Região semi-árida	TA1 TA2 TP TC TM
+TA2	Região árida	TA1 TA2 TD TC TM
+TD	Região desértica	TA2 TD
+TP	Planícies	TAR TA1 TA2 TP TC TM
+TC	Cordilheira	TAR TA1 TA2 TP TC TM
+TM	Região rochosa/montanhosa	TAR TO1 TA1 TA2 TP TC TM
+Finalmente, paisagens, condições climáticas e faunas encontradas nos mundos são descritos na tabela abaixo:
+
+ID	Descrição	Protótipos	Terrenos/Paisagens
+Paisagem		
+SOA	Oásis	PA	TA1 TA2
+SVM	Vegetação marinha	PTR PTE PR PO	TO1 TO2
+SCO	Corais	PTR PTE PR PO	TO1
+SF1	Floresta esparsa	PTR PTE	TP TM
+SF2	Floresta densa	PTR PTE	TP TM
+SF3	Floresta velha	PA PTR PTE	TP TM
+SL	Região de lagos	PTR PTE	TP TC TM
+SPC	Paredão/canyon	todos	TC TM
+Condições climáticas		
+CC0	Céu nublado	PTR PTE PC PR PO	TAR TO1 TO2 TP TC TM
+CC1	Chuva leve	PTR PTE PR PO	TAR TO1 TO2 TP TC TM
+CC2	Chuva forte	PTR PTE PR PO	TAR TO1 TO2 TP TC TM
+CN1	Queda de neve leve	PTE PR PO	TAR TP TC TM
+CN2	Queda de neve pesada	PTE PC PR PO	TAR TP TC TM
+CN3	Nevasca	PTE PC	TAR TP TC TM
+CN4	Tempestade glacial	PC	TAR TP TC TM
+CV	Região com atividade vulcânica	PV	TP TC TM
+CTA1	Tempestade de areia	PD PA	TD
+CTA2	Tempestade térmica	PD PA PV	TA2 TD CV
+CTE1	Tempestade elétrica	PR	TO1 TO2 TM
+Fauna		
+AMA	Minhocas de areia	todos	TA2 TD
+AAV	Aves	todos	TAR TA1 TP TC TM
+AMM	Mamíferos marinhos	todos	TAR TO1 TO2
+APE	Peixes	todos	TAR TO1 TO2 SL
+AAL	Algas	todos	TAR TO1 TP SL
+ACR	Crustáceos	todos	TAR TO1
+AHQ	Herbívoros quadrúpedes	todos	TAR TA1 TP TM
+ARO	Roedores do deserto	todos	TAR TA1 TA2 TD TC TM
+AFE	Felinos	todos	TAR TA1 TP TC TM SF1
+ACA1	Cães domesticáveis	todos	TP TC TM SF1
+ACA2	Lobos e cães selvagens	todos	TP TC TM SF1
+AHOT	Hominídeos terrestres	todos	TP TC TM SF1 SF2 SF3
+Regras de combinações e geração procedural
+Regra 1. Um planeta qualquer, associado a um protótipo P, só é considerado valido se possui setores associados a terrenos listados nas colunas de Terrenos principais e Terrenos secundários para o protótipo P.
+
+Regra 2. Um setor (i, j) do planeta possui uma vizinhança imediata composta pelos quatro setores adjacentes: (i,j-1), (i,j+1), (i-1,j), (i+1,j) (à esquerda, à direita, acima e abaixo). Um planeta só é considerado válido se, para cada setor (i,j), os setores na vizinhança imediata estiverem associados a terrenos válidos listados na coluna Terrenos vizinhos válidos da Tabela 2. Por exemplo, não deve haver regiões desérticas (TD) ao lado de uma planície (TP).
+
+Atenção: já que os planetas são esféricos, os setores da borda da matriz estão também ligados aos setores opostos. Exemplos:
+
+O setor (0, 0) de um planeta de tamanho 4 por 4 possui os vizinhos (0,3), (0,1), (3,0) e (1,0);
+O setor (0, 1) de um planeta de tamanho 4 por 4 possui os vizinhos (0,0), (0,2), (3,1) e (1,1);
+O setor (3, 3) de um planeta de tamanho 4 por 4 possui os vizinhos (3,2), (3,0), (2,3) e (0,3);
+O setor (3, 2) de um planeta de tamanho 4 por 4 possui os vizinhos (3,1), (3,3), (2,2) e (0,2).
+Regra 3. As paisagens, condições climáticas e fauna presentes nos setores devem coincidir com os terrenos (e paisagens) listados na Tabela 3. Exemplos:
+
+Oásis (SOA) só podem ocorrer em terrenos semi-áridos (TA1) e áridos (TA2);
+Planetas que possuem mamíferos marinhos (AMM) em um setor contendo florestas velhas (SF3) são inválidos;
+Planetas que possuem felinos (AFE) em oceanos rasos (TO1) são inválidos.
+Uma vez construídos, mundos (planificados) são representados por matrizes, onde o (i, j)-ésimo elemento contém os descritores associados ao setor (i, j). Por exemplo, um mundo oceânico pode ser representado por:
+
+PO
+7 6
+TO2     TO2,AMM TO2,AMM     TO1,AAL TO1,AAL TO2,AMM
+TO2     TO1,AAL TO1,AAL     TO1,AAL TO1,AAL TO2
+TO2,AMM TO1,AAL TAR,ACR,AAL TM      TAR,ACR TO1,AMM
+TO2,AMM TO1,AAL TO1,AAL     TO1,AAL TO1,AAL TO2    
+TO2     TO1,AAL TAR,ACR,AAL TO1,AAL TAR,AAL TO1,AMM
+TO2,AMM TO1,AAL TO1,AAL     TO1,AAL TO1,AAL TO2
+TO2,AMM TO2,AMM TO2,AMM     TO2     TO2,AMM TO2,AMM
+Entrada, Saída e Exemplos
+Como entrada, seu programa irá receber uma linha contendo o protótipo de planeta (um dos identificadores especificados na Tabela 1), uma linha contendo valores X e Y, indicando o tamanho da matriz representativa do mundo em questão, seguido de X linhas, onde cada linha contém descritores para os Y setores. Cada setor é associado a um ou mais descritores, sendo esses separados por vírgulas.
+
+O seu programa deve analisar o mundo e, para cada regra, responder ok, caso todos os setores respeitem a regra. Caso contrário, seu programa deve produzir um relatório indicando quais setores e descritores desrespeitaram as regras, de acordo com os formatos abaixo, seguidos pela palavra falha.
+
+Sempre analise os setores linha a linha, de cima para baixo, e coluna a coluna, da esquerda para direita.
+
+Regra 1. Seja iN,jN a posição e TN o terreno associado a um setor ilegal para o protótipo do planeta.
+
+regra 1
+{i0},{j0}:{T0}
+{i1},{j1}:{T1}
+...
+Regra 2. Seja iN,jN a posição e TN o terreno associado a um setor analisado, possuindo ao menos um vizinho cujo terreno é incompatível com TN.
+
+regra 2
+{i0},{j0}:{T0}
+{i1},{j1}:{T1}
+...
+Regra 3. Seja iN,jN a posição e TN o terreno associado ao setor analisado.
+
+regra 3
+{i0},{j0}:{T0}
+{i1},{j1}:{T1}
+...
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+PO
+7 6
+TO2     TO2,AMM TO2,AMM     TO1,AAL TO1,AAL TO2,AMM
+TO2     TO1,AAL TO1,AAL     TO1,AAL TO1,AAL TO2
+TO2,AMM TO1,AAL TAR,ACR,AAL TM      TAR,ACR TO1,AMM
+TO2,AMM TO1,AAL TO1,AAL     TO1,AAL TO1,AAL TO2    
+TO2     TO1,AAL TAR,ACR,AAL TO1,AAL TAR,AAL TO1,AMM
+TO2,AMM TO1,AAL TO1,AAL     TO1,AAL TO1,AAL TO2
+TO2,AMM TO2,AMM TO2,AMM     TO2     TO2,AMM TO2,AMM
+Saída
+
+regra 1
+ok
+regra 2
+ok
+regra 3
+ok
+Teste 02
+Entrada
+
+PD
+7 6
+TD,ARO      TD,ARO,CTA2 TD       TA2     TA2,CTA1 TD,CTA1
+TD,ARO,CTA2 TD,ARO,CTA2 TA2,CTA2 TA2     TA2,CTA1 TD,CTA1
+TD,ARO      TA2         TA2,CTA2 TM,AMA  TA1      TD
+TD,ARO,CTA2 TD          TA2,CTA2 TA2     TD       TD  
+TD,CTA2     TA2,ARO     TD       TD,ARO  TD,ARO   TD,AMA
+TD TD       TD,ARO      TD,CTA2  TD,ARO  TD,AMA
+TD,CTA2     TD,ARO      TD,CTA2  TD,ARO  TD,AMA   TD,AMA
+Saída
+
+regra 1
+2,3:TM
+2,4:TA1
+falha
+regra 2
+2,4:TA1
+2,5:TD
+3,4:TD
+falha
+regra 3
+0,4:TA2
+1,4:TA2
+2,3:TM
+falha
+Teste 03
+Entrada
+
+PTR
+5 5
+TM TM,SL,APE     TM            TP,AHQ      TP,AHQ
+TM TP,SL,AHQ,APE TP,AHQ        TP,AHQ      TP,AHQ
+TM TP,SL,AHQ,APE TP,SL,AHQ,APE TM          TAR,ACR
+TM TP,AHQ        TAR,AAL       TO1,AMM,APE TAR,AHQ
+TM TP,AHQ        TAR,ACR,AAL   TP,AHQ      TP,AAL
+Saída
+
+regra 1
+ok
+regra 2
+3,3:TO1
+4,3:TP
+falha
+regra 3
+ok
