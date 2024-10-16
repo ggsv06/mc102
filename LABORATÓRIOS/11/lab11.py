@@ -160,14 +160,15 @@ for i, (lmapa, lmob) in enumerate(zip(matriz_terrenos, matriz_mobs)):
             tupla = ELEMENTOS[mob]        
             ntupla = tupla[0]+' '+tupla[1]
             ntupla = ntupla.split()
-            if numero > 1:
-                if anterior not in ntupla and a not in ntupla:
+            if numero > 0:
+                if anterior not in ntupla and a not in ntupla and mob not in ntupla:
                     l_regra3.append(f'{i},{j}:{a}')
                     regra3 = 'falha'
-            elif numero <= 1:
+            elif numero == 0:
                 if proto not in ntupla or a not in ntupla:
                     l_regra3.append(f'{i},{j}:{a}')
                     regra3 = 'falha'
+                anterior = mob
             if 'S' == mob[0] or 'T' == mob[0] or 'C' == mob[0]:
                 anterior = mob
             
