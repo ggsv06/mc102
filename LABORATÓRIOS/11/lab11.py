@@ -168,6 +168,7 @@ for i, (lmapa, lmob) in enumerate(zip(matriz_terrenos, matriz_mobs)):
                 if proto not in ntupla or a not in ntupla:
                     l_regra3.append(f'{i},{j}:{a}')
                     regra3 = 'falha'
+            if 'S' == mob[0] or 'T' == mob[0] or 'C' == mob[0]:
                 anterior = mob
             
 
