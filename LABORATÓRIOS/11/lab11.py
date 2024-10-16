@@ -162,8 +162,6 @@ for i, (lmapa, lmob) in enumerate(zip(matriz_terrenos, matriz_mobs)):
             ntupla = ntupla.split()
             if numero > 0:
                 if anterior not in ntupla and a not in ntupla:
-                    print(anterior, mob, i, j)
-                    print(ntupla)
                     l_regra3.append(f'{i},{j}:{a}')
                     regra3 = 'falha'
             elif numero == 0:
