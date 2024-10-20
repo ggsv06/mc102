@@ -176,7 +176,7 @@ for i, (lmapa, lmob) in enumerate(zip(matriz_terrenos, matriz_mobs)):
 
 # Saída de dados
 for num, (regra, lista) in enumerate(zip([regra1, regra2, regra3], [l_regra1, l_regra2, l_regra3])):
-    num += 1
+    num += 2
     print(f'regra {num}')
     if regra == 'falha':
         for a in lista:

@@ -1,0 +1,58 @@
+O Caso do Medalhão Roubado
+Inspirado por histórias de mistério, você e seus amigos decidiram criar um jogo de detetive. Nesse jogo, o jogador controla um detetive que esta investigando o roubo de um medalhão de ouro de um museu. Ele deve coletar pistas pelo museu e determinar qual é o principal suspeito.
+
+A sua primeira tarefa no desenvolvimento do jogo é processar cada um dos mapas do jogo para determinar qual o principal suspeito. Nesse jogo, o detetive pode se mover na horizontal e na vertical, e não pode sair da matriz ou entrar em posições marcadas com obstáculos. Como você deve determinar o principal suspeito, o seu programa deve encontrar todas as pistas que podem ser alcançadas pelo detetive dada a sua posição inicial. Em seguida você deve processar uma lista de suspeitos e determinar quais deles são mais incriminados pelas pistas encontradas.
+
+O programa receberá como entrada um inteiro N seguido por uma matriz de caracteres com N linhas que representa um mapa do jogo. O caractere D representa a posição inicial do detetive, caracteres . representam uma posição vazia, caracteres # representam um obstáculo por onde o detetive não pode passar e números são usados para representar pistas que podem ser coletadas pelo detetive. Em seguida o programa recebera um número M seguido de M linhas com uma letra representando cada suspeito seguido por uma lista de pistas que o incriminam. A letra é separada da lista por um espaço e os números da lista são separados por vírgulas. A saída do programa deve ser uma linha com as letras que representam os suspeitos incriminados pelo maior número de pistas, separadas por espaços, na mesma ordem que elas foram apresentadas na entrada (em caso de empate).
+
+Teste 01
+Entrada
+
+3
+#############################
+#D.......1......#......2....#
+#############################
+2
+A 1
+B 2
+Saída
+
+A
+Teste 02
+Entrada
+
+8
+..#....4...
+6.#...D....
+..#........
+###..#####.
+.....#.2.#.
+#.#..#9..#.
+..#..#####.
+1.#.......5
+3
+A 1,4,5
+B 5,6,9
+C 1,2,4,6
+Saída
+
+A
+Teste 05
+Entrada
+
+7
+#.....1.#####
+#####...##..#
+#...######..#
+#.0........D#
+#...######..#
+#.###...##.3#
+#####.2.#####
+4
+A 0
+B 1
+C 2
+D 3
+Saída
+
+A D
