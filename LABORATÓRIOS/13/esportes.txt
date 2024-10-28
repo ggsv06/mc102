@@ -1,0 +1,96 @@
+Jogos Olímpicos 🥇🥈🥉
+Seus amigos estavam muito interessados nos Jogos Olímpicos que ocorreram neste ano, mas alguns deles tiveram dificuldade em acompanhar quais países se saíram melhor nos jogos. Para evitar que eles tenham essa dificuldade no futuro, a sua tarefa é implementar um programa para avaliar um conjunto de provas e determinar qual país se saiu melhor nessas provas, levando em conta as medalhas obtidas.
+
+Como cada amigo dá um valor diferente a cada uma das medalhas e à condição em que a medalha foi obtida, o seu programa deve ser capaz de indicar o ranking dos países seguindo quatro critérios:
+
+Critério Oficial: Critério adotado pelas Olimpíadas, ordenando os países pela maior quantidade de medalhas de ouro, seguido pela maior quantidade de medalhas de prata e finalizando pela maior quantidade de medalhas de bronze. Caso haja empate, os países são ordenados seguindo a ordem alfabética.
+
+Ponderado: Neste critério, cada medalha de ouro, prata e bronze tem um peso definido pelos seus amigos. Caso haja empate, os países são ordenados seguindo a ordem alfabética.
+
+Recorde Olímpico: Neste critério, os países são ordenados pela maior quantidade de recordes olímpicos (obtidos pelo país com a medalha de ouro), seguido pela ordenação pela maior quantidade de medalhas de ouro, depois pela maior quantidade de medalhas de prata e finalizando pela maior quantidade de medalhas de bronze. Caso haja empate, os países são ordenados seguindo a ordem alfabética.
+
+Dobradinha: Dobradinha é um termo usado quando um país ganha duas medalhas na mesma categoria. Seus amigos adotaram o termo "dobradinha" para se referir ao caso em que um mesmo país ganha a medalha de ouro no mesmo esporte/categoria de esporte no masculino e no feminino. Por exemplo, se o Brasil ganhou a medalha de ouro na prova de natação 100m livres no masculino e no feminino, isso se categoriza como dobradinha. No entanto, se o Brasil ganhou a medalha de ouro na prova de natação 100m livres no masculino e na natação 200m livres no feminino, isso não se categoriza como dobradinha. Neste critério, os países são ordenados pela maior quantidade de dobradinhas, seguido pela ordenação pela maior quantidade de medalhas de ouro, depois pela maior quantidade de medalhas de prata e finalizando pela maior quantidade de medalhas de bronze. Caso haja empate, os países são ordenados seguindo a ordem alfabética.
+
+O seu código receberá quatro valores na primeira linha, referentes à quantidade N de provas analisadas, ao peso da medalha de ouro, ao peso da medalha de prata e ao peso da medalha de bronze, respectivamente. Nas próximas N linhas, você deverá ler cinco informações, separadas por -: prova, modalidade (M para masculino ou F para feminino), país que ganhou a medalha de ouro, país que ganhou a medalha de prata e país que ganhou a medalha de bronze. Caso o país que ganhou a medalha de ouro tenha obtido o recorde olímpico, um sexto valor deverá ser lido, representando esse evento (RO).
+
+Como saída, você deverá apresentar os países ordenados por cada um dos quatro critérios, separados por -, indo do país que ficou na primeira posição no quadro de medalhas para o último colocado. A saída deverá ser feita conforme o exemplo abaixo:
+
+Critério Oficial:
+país1 - país2 - país3 ...
+Ponderado:
+país1 - país2 - país3 ...
+Recorde Olímpico:
+país1 - país2 - país3 ...
+Dobradinha:
+país1 - país2 - país3 ...
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+6 6 5 1
+Natação 100m livres - F - Brasil - Estados Unidos - Argentina
+Natação 100m livres - M - Estados Unidos - Itália - Uruguai - RO
+Futebol - F - Brasil - Argentina - México
+Futebol - M - Argentina - Itália - Brasil
+Volei - F - Egito - Brasil - Chile
+Volei - M - Egito - Argentina - Brasil
+Saída
+
+Critério Oficial:
+Brasil - Egito - Argentina - Estados Unidos - Itália - Chile - México - Uruguai
+Ponderado:
+Brasil - Argentina - Egito - Estados Unidos - Itália - Chile - México - Uruguai
+Recorde Olímpico:
+Estados Unidos - Brasil - Egito - Argentina - Itália - Chile - México - Uruguai
+Dobradinha:
+Egito - Brasil - Argentina - Estados Unidos - Itália - Chile - México - Uruguai
+Teste 02
+Entrada
+
+15 5 2 1
+Natação 100m livres - F - Brasil - Estados Unidos - Argentina
+Natação 100m livres - M - Estados Unidos - Itália - Uruguai - RO
+Natação 200m livres - F - Paraguai - Espanha - Austrália - RO
+Natação 400m costas - M - Coreia do Sul - Bolívia - México
+Atletismo 100m - M - Jamaica - Alemanha - Chile - RO
+Atletismo 200m - M - Argentina - China - Estados Unidos
+Natação 400m costas - F - Coreia do Sul - China - Estados Unidos - RO
+Futebol - F - Brasil - Argentina - México
+Futebol - M - Argentina - Itália - Brasil
+Volei - F - Egito - Brasil - Chile
+Volei - M - Egito - Argentina - Brasil
+Atletismo 100m - F - Jamaica - China - Estados Unidos - RO
+Volei de Praia - M - Brasil - Itália - Uruguai
+Volei de Praia - F - China - Brasil - Alemanha
+Basquete - M - Estados Unidos - Sérvia - Colômbia
+Saída
+
+Critério Oficial:
+Brasil - Argentina - Estados Unidos - Coreia do Sul - Egito - Jamaica - China - Paraguai - Itália - Alemanha - Bolívia - Espanha - Sérvia - Chile - México - Uruguai - Austrália - Colômbia
+Ponderado:
+Brasil - Argentina - Estados Unidos - China - Coreia do Sul - Egito - Jamaica - Itália - Paraguai - Alemanha - Bolívia - Chile - Espanha - México - Sérvia - Uruguai - Austrália - Colômbia
+Recorde Olímpico:
+Jamaica - Estados Unidos - Coreia do Sul - Paraguai - Brasil - Argentina - Egito - China - Itália - Alemanha - Bolívia - Espanha - Sérvia - Chile - México - Uruguai - Austrália - Colômbia
+Dobradinha:
+Coreia do Sul - Egito - Jamaica - Brasil - Argentina - Estados Unidos - China - Paraguai - Itália - Alemanha - Bolívia - Espanha - Sérvia - Chile - México - Uruguai - Austrália - Colômbia
+Teste 03
+Entrada
+
+6 5 3 1
+Natação 200m livres - F - Brasil - Argentina - Uruguai
+Natação 200m costas - M - Estados Unidos - Brasil - Itália
+Atletismo 800m - F - Quênia - Brasil - Argentina
+Atletismo 1500m - M - Marrocos - Quênia - Egito
+Ciclismo pista - F - Canadá - Austrália - Argentina
+Ciclismo estrada - M - Austrália - Itália - Brasil - RO
+Saída
+
+Critério Oficial:
+Brasil - Austrália - Quênia - Canadá - Estados Unidos - Marrocos - Argentina - Itália - Egito - Uruguai
+Ponderado:
+Brasil - Austrália - Quênia - Argentina - Canadá - Estados Unidos - Marrocos - Itália - Egito - Uruguai
+Recorde Olímpico:
+Austrália - Brasil - Quênia - Canadá - Estados Unidos - Marrocos - Argentina - Itália - Egito - Uruguai
+Dobradinha:
+Brasil - Austrália - Quênia - Canadá - Estados Unidos - Marrocos - Argentina - Itália - Egito - Uruguai
