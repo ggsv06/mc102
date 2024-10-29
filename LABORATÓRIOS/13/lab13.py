@@ -34,9 +34,9 @@ for pais in paises:
             if len(l) == 6:
                 ro += 1
             mod_em_primeiro.append(l[0])
-        elif pais == l[3]:
+        if pais == l[3]:
             pratas+=1
-        elif pais == l[4]:
+        if pais == l[4]:
             bronzes+=1
     dobradinhas = len(mod_em_primeiro) - len(list(dict.fromkeys(mod_em_primeiro)))
     quadro.append((pais, ouros, pratas, bronzes, ro, dobradinhas))
