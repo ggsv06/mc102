@@ -1,0 +1,51 @@
+Dependências de Tarefas II
+As dependências entre as tarefas que você deve realizar para a seu curso de graduação estão mais complexas e o programa que você escreveu no Laboratório 07 já não é capaz de determinar se as tarefas podem ser realizadas. Felizmente, com seus novos conhecimentos de recursão, você pode atualizar esse programa para lidar com a nova complexidade.
+
+Agora cada uma das suas tarefas pode depender de múltiplas tarefas. Se houver um ciclo nas dependências, é impossível encontrar uma ordem em que as tarefas possam ser realizadas. No seguinte exemplo, como a tarefa 1 depende da tarefa 2, a tarefa 2 depende da tarefa 3 e a tarefa 3 depende da tarefa 1, não é possível realizar todas as tarefas. Da mesma forma a tarefa 6 depende da tarefa 7 e a tarefa 7 depende da tarefa 6, o que também impede a realização de todas as tarefas.
+
+Representação gráfica do exemplo de dependência de tarefas
+
+O seu programa receberá um número inteiro N seguido por N sequências de números, todos entre 1 e N, sendo uma sequência por linha com os números separados por espaços. Cada sequência representando as dependências de uma das tarefas que você deve realizar, de forma que a i-ésima sequência corresponde a tarefa número i. Na sequência de uma tarefa i a presença de um valor j indica que j é uma das dependências de i. Se não houver dependência para uma tarefa, a sequência correspondente terá apenas um número com o valor 0. Com essa representação, o exemplo apresentado anteriormente corresponde a entrada do Teste 01. Como saída seu programa deve imprimir Todas as tarefas podem ser realizadas, se for possível realizar todas as tarefas, ou Alguma tarefa não pode ser realizada, caso contrário.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+7
+2
+3 5
+1 4
+6
+4 6
+7
+6
+Saída
+
+Alguma tarefa não pode ser realizada
+Teste 02
+Entrada
+
+6
+4
+5 1
+5 2
+0
+4
+3 2 1
+Saída
+
+Todas as tarefas podem ser realizadas
+Teste 03
+Entrada
+
+6
+2 6 3
+6
+2 6
+6 5
+3 1
+1 3 2
+Saída
+
+Alguma tarefa não pode ser realizada
