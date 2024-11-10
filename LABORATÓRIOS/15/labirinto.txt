@@ -1,0 +1,55 @@
+Labirinto de Creta
+Você foi contratado para ajudar no desenvolvimento de um jogo sobre a mitologia grega. Em uma das fases em que você está trabalhando, o jogador controla Teseu, o herói de Atenas que foi enviado para Creta para entrar no labirinto e enfrentar o Minotauro.
+
+Para que o jogo não fique monótono, além do tradicional Minotauro, o labirinto também contém alguns gigantes com os quais Teseu deve batalhar, caso encontre algum deles. Teseu possui uma quantidade de energia, que DIMINUI em uma unidade a cada movimentação por uma posição livre do mapa (representado por .) ou de acordo com a energia necessária para LUTAR CONTRA OS GIGANTES (representados por G) e o Minotauro (representado por M). Caso a energia de Teseu seja maior que 0 ao vencer a batalha contra o Minotauro, então Teseu terá vencido a batalha. Caso contrário, Teseu não terá conseguido derrotar o Minotauro.
+
+Seu chefe pediu que você desenvolva um código que receba os valores de energia de Teseu, a energia necessária para lutar contra os gigantes e a energia necessária para batalhar contra o Minotauro e indique qual foi o resultado final da batalha.
+
+Seu código deve receber na primeira linha os valores N, E, G e M, indicando a quantidade de linhas do mapa, a energia inicial de Teseu, a energia necessária para lutar contra um gigante e a energia necessária para lutar contra o Minotauro, respectivamente. Em seguida, você deverá ler a posição x e y de Teseu, com x e y com valor mínimo de 0. Nas próximas N linhas, você deverá ler o mapa, com . indicando um ponto possível de passagem, # indicando um bloqueio, G indicando um gigante e M indicando o Minotauro.
+
+Durante o processamento, Teseu pode se movimentar para os pontos acima, abaixo, à esquerda e à direita do ponto atual. Além disso, se ele sair pela borda do mapa, ele não conseguirá voltar para o jogo. Por fim, Teseu não pode passar por locais com bloqueios.
+
+Como saída, caso seja possível encontrar um caminho no mapa que permita Teseu chegar com energia suficiente para matar o Minotauro, o seu programa deve imprimir Teseu derrotou o Minotauro. Caso contrário, seu programa deve imprimir Teseu não derrotou o Minotauro.
+
+Exemplos de entradas e saídas esperadas pelo seu programa:
+
+Teste 01
+Entrada
+
+5 15 2 4
+0 0
+. . # # M
+# . # # .
+# . G G .
+# . # # .
+. . G . .
+Saída
+
+Teseu derrotou o Minotauro
+Teste 02
+Entrada
+
+5 15 3 4
+0 0
+. . # # M
+# . # # .
+# . G G .
+# . # # .
+. . G . .
+Saída
+
+Teseu não derrotou o Minotauro
+Teste 03
+Entrada
+
+5 22 6 5
+0 0
+. . # # M
+# . # # .
+# . G G .
+# . # # .
+. . G . .
+
+Saída
+
+Teseu derrotou o Minotauro
