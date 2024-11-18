@@ -62,7 +62,7 @@ def caminho(mapa, i, j, E, G, M, lista):
             temp.remove(s)
             c=0
             for pas in lista:
-                if s[2] == pas:
+                if s[3] == pas:
                     c+=1
                     continue
                 lista.remove(pas)
