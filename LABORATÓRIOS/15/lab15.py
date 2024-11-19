@@ -40,11 +40,28 @@ def caminho(mapa, i, j, E, G, M, lista):
         l = [i,j-1]
         if l not in lista and mapa[l[0]][l[1]] != '#':
             dire.append(l)
+    for v in dire:
+        if v != dire[0]:
+            nlista = lista.copy()
+            temp.append([ v,E,nlista ])
 
-    if len(dire)>1:
-        for v in dire:
-            if v != dire[0]:
-                temp.append([ v,E,[i,j] ])
+    if mapa[i][j] == 'M' and E > 0:
+        return 'Teseu derrotou o Minotauro'
+
+    if E <= 0 or len(dire) == 0:
+        for s in temp:
+            temp.remove(s)
+            ni = s[0][0]
+            nj = s[0][1]
+            ne = s[1]
+            nl = s[2]
+            if mapa[ni][nj] == '.':
+                return caminho(mapa, ni, nj, ne-1, G, M, nl)
+            if mapa[ni][nj] == 'G':
+                return caminho(mapa, ni, nj, ne-G, G, M, nl)
+            if mapa[ni][nj] == 'M':
+                return caminho(mapa, ni, nj, ne-M, G, M, nl)
+        return 'Teseu não derrotou o Minotauro'
 
     for v in dire:
         ni = v[0]
@@ -56,34 +73,8 @@ def caminho(mapa, i, j, E, G, M, lista):
         if mapa[ni][nj] == 'M':
             return caminho(mapa, ni, nj, E-M, G, M, lista)
 
-
-    if E <= 0:
-        for s in temp:
-            temp.remove(s)
-            c=0
-            for pas in lista:
-                if s[2] == pas:
-                    c+=1
-                    continue
-                lista.remove(pas)
-                
-            ni = s[0][0]
-            nj = s[0][1]
-            ne = s[1]
-        if mapa[ni][nj] == '.':
-            return caminho(mapa, ni, nj, ne-1, G, M, lista)
-        if mapa[ni][nj] == 'G':
-            return caminho(mapa, ni, nj, ne-G, G, M, lista)
-        if mapa[ni][nj] == 'M':
-            return caminho(mapa, ni, nj, ne-M, G, M, lista)
-        return 'Teseu derrotou o Minotauro'
-
-    elif mapa[i][j] == 'M' and E > 0:
-        return 'Teseu não derrotou o Minotauro'
-
 # . . .
 # Simulação do jogo
 # Impressão da saída
 lista = []
 print(caminho(mapa, i, j, E, G, M, lista))
-print(lista)
